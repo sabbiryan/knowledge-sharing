@@ -19,8 +19,11 @@ namespace KS.EntityFrameworkCore
 
         public virtual DbSet<QuestionCategory> QuestionCategories { get; set; }
         public virtual DbSet<Question> Questionses { get; set; }
-        public virtual DbSet<QuestionsAnswer> QuestionsAnswers { get; set; }
-        public virtual DbSet<QuestionsAnswerComment> QuestionsAnswerComments { get; set; }
-        public virtual DbSet<QuestionViewCount> QuestionViewCounts { get; set; }        
+        public virtual DbSet<QuestionRating> QuestionRatings { get; set; }
+        public virtual DbSet<QuestionViewCount> QuestionViewCounts { get; set; }
+
+        public virtual DbSet<QuestionAnswer> QuestionAnswers { get; set; }
+        public virtual DbSet<QuestionAnswerRating> QuestionAnswerRatings { get; set; }
+        public virtual DbSet<QuestionAnswerComment> QuestionAnswerComments { get; set; }        
     }
 }

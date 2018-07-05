@@ -1042,6 +1042,8 @@ namespace KS.Migrations
 
                     b.Property<int?>("Quality");
 
+                    b.Property<long>("QuestionViewCount");
+
                     b.Property<int?>("Rating");
 
                     b.HasKey("Id");
@@ -1051,36 +1053,7 @@ namespace KS.Migrations
                     b.ToTable("Questionses");
                 });
 
-            modelBuilder.Entity("KS.Core.Models.QuestionCategory", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreationTime");
-
-                    b.Property<long?>("CreatorUserId");
-
-                    b.Property<long?>("DeleterUserId");
-
-                    b.Property<DateTime?>("DeletionTime");
-
-                    b.Property<string>("Description");
-
-                    b.Property<bool>("IsDeleted");
-
-                    b.Property<DateTime?>("LastModificationTime");
-
-                    b.Property<long?>("LastModifierUserId");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("QuestionCategories");
-                });
-
-            modelBuilder.Entity("KS.Core.Models.QuestionsAnswer", b =>
+            modelBuilder.Entity("KS.Core.Models.QuestionAnswer", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1112,10 +1085,10 @@ namespace KS.Migrations
 
                     b.HasIndex("QuestionId");
 
-                    b.ToTable("QuestionsAnswers");
+                    b.ToTable("QuestionAnswers");
                 });
 
-            modelBuilder.Entity("KS.Core.Models.QuestionsAnswerComment", b =>
+            modelBuilder.Entity("KS.Core.Models.QuestionAnswerComment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1143,7 +1116,98 @@ namespace KS.Migrations
 
                     b.HasIndex("QuestionAnswerId");
 
-                    b.ToTable("QuestionsAnswerComments");
+                    b.ToTable("QuestionAnswerComments");
+                });
+
+            modelBuilder.Entity("KS.Core.Models.QuestionAnswerRating", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<int>("QuestionAnswerId");
+
+                    b.Property<int>("Rating");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionAnswerId");
+
+                    b.ToTable("QuestionAnswerRatings");
+                });
+
+            modelBuilder.Entity("KS.Core.Models.QuestionCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<string>("Description");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("QuestionCategories");
+                });
+
+            modelBuilder.Entity("KS.Core.Models.QuestionRating", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("CreationTime");
+
+                    b.Property<long?>("CreatorUserId");
+
+                    b.Property<long?>("DeleterUserId");
+
+                    b.Property<DateTime?>("DeletionTime");
+
+                    b.Property<bool>("IsDeleted");
+
+                    b.Property<DateTime?>("LastModificationTime");
+
+                    b.Property<long?>("LastModifierUserId");
+
+                    b.Property<int>("QuestionId");
+
+                    b.Property<int>("Rating");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("QuestionRatings");
                 });
 
             modelBuilder.Entity("KS.Core.Models.QuestionViewCount", b =>
@@ -1385,26 +1449,42 @@ namespace KS.Migrations
                         .HasForeignKey("CategoryId");
                 });
 
-            modelBuilder.Entity("KS.Core.Models.QuestionsAnswer", b =>
+            modelBuilder.Entity("KS.Core.Models.QuestionAnswer", b =>
                 {
                     b.HasOne("KS.Core.Models.Question", "Question")
-                        .WithMany()
+                        .WithMany("QuestionsAnswers")
                         .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("KS.Core.Models.QuestionsAnswerComment", b =>
+            modelBuilder.Entity("KS.Core.Models.QuestionAnswerComment", b =>
                 {
-                    b.HasOne("KS.Core.Models.QuestionsAnswer", "QuestionsAnswer")
-                        .WithMany()
+                    b.HasOne("KS.Core.Models.QuestionAnswer", "QuestionAnswer")
+                        .WithMany("QuestionAnswerComments")
                         .HasForeignKey("QuestionAnswerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("KS.Core.Models.QuestionAnswerRating", b =>
+                {
+                    b.HasOne("KS.Core.Models.QuestionAnswer", "QuestionAnswer")
+                        .WithMany("QuestionAnswerRatings")
+                        .HasForeignKey("QuestionAnswerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("KS.Core.Models.QuestionRating", b =>
+                {
+                    b.HasOne("KS.Core.Models.Question", "Question")
+                        .WithMany("QuestionRatings")
+                        .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("KS.Core.Models.QuestionViewCount", b =>
                 {
                     b.HasOne("KS.Core.Models.Question", "Question")
-                        .WithMany()
+                        .WithMany("QuestionViewCounts")
                         .HasForeignKey("QuestionId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

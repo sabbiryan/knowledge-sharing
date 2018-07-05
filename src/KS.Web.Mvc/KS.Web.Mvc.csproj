@@ -57,6 +57,9 @@
     <Folder Include="wwwroot\view-resources\Views\_Bundles\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Update="Views\Home\AskAQuestion.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Home\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

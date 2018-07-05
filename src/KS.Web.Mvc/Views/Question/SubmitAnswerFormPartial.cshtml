@@ -1,0 +1,23 @@
+﻿@model KS.Questions.Dto.CreateQuestionAnswerDto
+
+
+<div class="panel">
+    <div class="panel-body">
+        <form asp-action="Answer" asp-controller="Question" method="post">
+            <h4>Share your knowledge</h4>
+            <br/>
+
+            <input type="hidden" asp-for="@Model.QuestionId"/>
+
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <textarea class="form-control" rows="10" required minlength="7" asp-for="@Model.AnswerText"> </textarea>
+                    <label class="form-label" asp-for="@Model.AnswerText">Write your answer here</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Submit Answer</button>
+            </div>
+        </form>
+    </div>
+</div>

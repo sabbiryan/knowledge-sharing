@@ -1,0 +1,51 @@
+﻿@using Microsoft.EntityFrameworkCore
+@model KS.Questions.Dto.QuestionDto
+
+@{
+    ViewBag.Title = "Question";
+    Layout = "_Layout";
+}
+
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    <span class="text-capitalize">@Model.Name </span>
+                    <a class="btn btn-default text-uppercase pull-right btn-outline" href="/">Back to home </a>
+                </h2>
+            </div>
+            <div class="body">
+
+                <h4><small>Asked by <span class="text-uppercase">@Model.CreatorUser.FullName</span> on @Model.CreationTime.ToLongDateString() at @Model.CreationTime.ToLongTimeString()</small></h4>
+
+                <p>
+                    @Model.Description
+                </p>
+
+                <br />
+
+                @if (Model.QuestionAnswers != null && Model.QuestionAnswers.Any())
+                {
+                    <h4>Most Recent Answers</h4>
+                    foreach (var answer in Model.QuestionAnswers.OrderByDescending(x => x.CreationTime))
+                    {
+                        <div class="panel">
+                            <div class="panel-body">                            
+                                @answer.AnswerText
+                                <br/>
+                                <small class="pull-right"> Submited by @answer.CreatorUser.FullName on @answer.CreationTime.ToLongDateString() at @answer.CreationTime.ToLongTimeString()</small>
+                            </div>
+                        </div>
+                    }
+                }
+                
+                <br/>
+
+                @Html.Partial("SubmitAnswerFormPartial", Model.QuestionAnswerInput)
+
+            </div>
+        </div>
+    </div>
+</div>

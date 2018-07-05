@@ -1,4 +1,5 @@
-using Abp.Application.Services.Dto;
+using System.Collections.Generic;
+using System.Linq;
 using Abp.AutoMapper;
 using KS.Core.Models;
 using KS.Core.Models.Emums;
@@ -6,7 +7,7 @@ using KS.Core.Models.Emums;
 namespace KS.Questions.Dto
 {
     [AutoMap(typeof(Question))]
-    public class QuestionDto : EntityDto<int>
+    public class QuestionDto : DtoBase<int>
     {
         public int? CategoryId { get; set; }
 
@@ -15,6 +16,14 @@ namespace KS.Questions.Dto
 
         public QuestionQuality? Quality { get; set; }
 
-        public Rating? Rating { get; set; }
+        public Rating? Rating { get; set; }                      
+
+        public string ShortDiscription => Description.ToArray().ToList().Count > 100
+            ? string.Join(" ", Description.ToArray().ToList().Take(100))
+            : Description;
+
+        public List<QuestionAnswerDto> QuestionAnswers { get; set; } = new List<QuestionAnswerDto>();
+
+        public CreateQuestionAnswerDto QuestionAnswerInput { get; set; } = new CreateQuestionAnswerDto();
     }
 }

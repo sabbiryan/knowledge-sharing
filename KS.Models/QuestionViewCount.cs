@@ -4,7 +4,7 @@ using KS.Authorization.Users;
 
 namespace KS.Core.Models
 {
-    public class QuestionViewCount : FullAuditedEntity<int>
+    public class QuestionViewCount : KsEntityBase<int>
     {
         public int QuestionId { get; set; }
         [ForeignKey("QuestionId")]
