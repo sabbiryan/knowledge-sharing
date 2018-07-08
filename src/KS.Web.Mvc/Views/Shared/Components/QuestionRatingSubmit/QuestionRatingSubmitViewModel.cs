@@ -1,15 +1,16 @@
 using System.ComponentModel.DataAnnotations.Schema;
-using Abp.Domain.Entities.Auditing;
+using Abp.AutoMapper;
+using KS.Core.Models;
 using KS.Core.Models.Emums;
+using KS.Sessions.Dto;
 
-namespace KS.Core.Models
+namespace KS.Web.Views.Shared.Components.RatingSubmit
 {
-    public class QuestionRating : KsEntityBase<int>
+    [AutoMapFrom(typeof(QuestionRating))]
+    public class QuestionRatingSubmitViewModel
     {
         public int QuestionId { get; set; }
-        [ForeignKey("QuestionId")]
-        public virtual Question Question { get; set; }
-
+        
         public Rating Rating { get; set; }
 
         public string Reason { get; set; }

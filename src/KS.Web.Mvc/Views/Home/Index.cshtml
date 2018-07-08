@@ -2,17 +2,14 @@
 @using KS.Questions.Dto
 @using KS.Web.Models.Home
 @using KS.Web.Startup
-
+@using KS.Web.Views.Shared.Components.RatingSubmit
 @model KS.Web.Models.Home.HomeViewModel
-
 @{
     ViewBag.CurrentPageName = PageNames.Home; // The menu item will be active for this page.
 }
-
-@section scripts{ 
+@section scripts{
     <script src="~/view-resources/Views/Home/Question.js"></script>
 }
-
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
@@ -22,7 +19,7 @@
                 </h2>
             </div>
             <div class="body">
-               
+
                 @if (Model.PagedResultDto.TotalCount > 0)
                 {
                     foreach (var item in Model.PagedResultDto.Items)
@@ -36,13 +33,16 @@
                         <p>
                             <a class="btn btn-info waves-effect waves-float" href="@Url.Action("Answer","Question",new {questionId = item.Id})">Answer this question</a>
                             @*<button class="btn btn-default waves-effect waves-float" type="button">Comment</button>*@
-                            <a class="btn btn-default waves-effect waves-float" >Rate this question</a>
+                            @*<a class="btn btn-default waves-effect waves-float rating-submit-component">Rate this question</a>*@
+                            
                             <a class="btn btn-default waves-effect waves-float" href="@Url.Action("Answer","Question",new {questionId = item.Id})">View answers</a>
+
+                            @await Component.InvokeAsync(typeof(QuestionRatingSubmitViewComponent), item.Id)
                         </p>
-                        <br/>
+                        <br />
                     }
                 }
-               
+
             </div>
         </div>
     </div>

@@ -4,14 +4,16 @@ using KS.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KS.Migrations
 {
     [DbContext(typeof(KSDbContext))]
-    partial class KSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180708161823_Reason_Added_On_Reating")]
+    partial class Reason_Added_On_Reating
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
