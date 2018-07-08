@@ -1,7 +1,7 @@
 using Abp.AutoMapper;
 using KS.Authorization.Users;
 
-namespace KS.Questions.Dto
+namespace KS.Shared.Dto
 {
     [AutoMap(typeof(User))]
     public class SimpleUserDto

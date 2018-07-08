@@ -8,7 +8,10 @@
 @Html.Partial("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("SubmitYourRating")))
 
 <div class="modal-body">
-    <form name="QuestionRatingSubmitForm" role="form" novalidate class="form-validation">
+    <form name="QuestionRatingSubmitForm" id="QuestionRatingSubmitForm" role="form" novalidate class="form-validation">
+
+        <input type="hidden" asp-for="QuestionId"/>
+
         <div class="form-group form-float">
             <div class="form-line">
                 <select class="form-control" asp-for="Rating" asp-items="Html.GetEnumSelectList<Rating>()" required>

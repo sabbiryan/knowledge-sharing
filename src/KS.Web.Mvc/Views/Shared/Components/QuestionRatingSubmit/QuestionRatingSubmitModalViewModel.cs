@@ -6,6 +6,9 @@ namespace KS.Web.Views.Shared.Components.RatingSubmit
     public class QuestionRatingSubmitModalViewModel
     {
         [Required]
+        public int QuestionId { get; set; }
+
+        [Required]
         public Rating Rating { get; set; }
 
         public string Reason { get; set; }

@@ -1,33 +1,36 @@
 ﻿(function ($) {
-    var _questionService = abp.services.app.question;
+    var _questionRatingService = abp.services.app.questionRating;
 
-    var _$form = $('form[name=QuestionRatingSubmitForm]');
+    //var _$form = $('form[name=QuestionRatingSubmitForm]');
+    var _$form = $('#QuestionRatingSubmitForm');
 
-    function switchToSelectedTenant () {
-
-        //var tenancyName = _$form.find('input[name=TenancyName]').val();
-
+    function submitQuestionRating () {
+        
+        var questionRating = _$form.serializeFormToObject();
+       
         if (!_$form.valid()) {
             return;
         }
 
-        _questionService.submitQuestionRating({
-            tenancyName: tenancyName
-        }).done(function (result) {
-        });
+        _questionRatingService.create(questionRating)
+            .done(function (result) {
+                location.reload();
+            }).fail(function(error) {
+
+            });
     }
 
     //Handle save button click
     _$form.closest('div.modal-content').find(".save-button").click(function(e) {
         e.preventDefault();
-        switchToSelectedTenant();
+        submitQuestionRating();
     });
 
     //Handle enter key
     _$form.find('input').on('keypress', function (e) {
         if (e.which === 13) {
             e.preventDefault();
-            switchToSelectedTenant();
+            submitQuestionRating();
         }
     });
 

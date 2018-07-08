@@ -1,8 +1,7 @@
 using System;
 using Abp.Application.Services.Dto;
-using KS.Questions.Dto;
 
-namespace KS
+namespace KS.Shared.Dto
 {
     public class DtoBase<T> : EntityDto<T>
     {

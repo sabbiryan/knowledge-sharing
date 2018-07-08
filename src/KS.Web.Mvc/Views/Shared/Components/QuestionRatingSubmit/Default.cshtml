@@ -4,7 +4,7 @@
     WebResourceManager.AddScript(ApplicationPath + "view-resources/Views/Shared/Components/QuestionRatingSubmit/Default.js");
 }
 <a class="btn btn-default waves-effect waves-float question-rating-submit-component"
-   data-toggle="modal" data-target="#QuestionRatingSubmitModal">@L("RateThisQuestion")</a>
+   data-toggle="modal" data-target="#QuestionRatingSubmitModal" onclick="questionRatingSubmitComponent(@Model.QuestionId)">@L("RateThisQuestion")</a>
 
 @*<div class="card question-rating-submit-component" style="margin-bottom: 3px;">
     <div class="body text-center">

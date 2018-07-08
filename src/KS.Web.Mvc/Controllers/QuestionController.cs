@@ -42,9 +42,12 @@ namespace KS.Web.Controllers
         }
 
 
-        public async Task<PartialViewResult> QuestionRatingSubmitModal()
+        public async Task<PartialViewResult> QuestionRatingSubmitModal(QuestionRatingSubmitModalViewModel input)
         {
-            var viewModel = new QuestionRatingSubmitModalViewModel();
+            var viewModel = new QuestionRatingSubmitModalViewModel()
+            {
+                QuestionId = input.QuestionId
+            };
 
             return PartialView("/Views/Shared/Components/QuestionRatingSubmit/_QuestionRatingSubmitModal.cshtml", viewModel);
         }

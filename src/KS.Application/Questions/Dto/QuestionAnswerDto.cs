@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Abp.AutoMapper;
 using KS.Core.Models;
 using KS.Core.Models.Emums;
+using KS.Shared.Dto;
 
 namespace KS.Questions.Dto
 {
