@@ -16,6 +16,7 @@ namespace KS.Questions.Dto
         public bool IsCorrect { get; set; }
 
         public Rating? Rating { get; set; }
+        public double RatingValue { get; set; }
 
         public List<QuestionAnswerCommentDto> QuestionAnswerComments { get; set; } = new List<QuestionAnswerCommentDto>();
     }

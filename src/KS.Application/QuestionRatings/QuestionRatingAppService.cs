@@ -47,10 +47,13 @@ namespace KS.QuestionRatings
             var question = await _questionRepository.GetAll().Where(x => x.Id == input.QuestionId)
                 .Include(x => x.QuestionRatings).FirstOrDefaultAsync();
 
-            var rating = (int) (question.QuestionRatings.Sum(x => (int) x.Rating) / question.QuestionRatings.Count);
-            question.Rating = (Rating)rating;
+            if (question != null)
+            {
+                question.RatingValue = (question.QuestionRatings.Sum(x => (int)x.Rating) / question.QuestionRatings.Count);
+                question.Rating = (Rating)question.RatingValue;
 
-            await _questionRepository.UpdateAsync(question);
+                await _questionRepository.UpdateAsync(question);
+            }
 
             return questionRatingDto;
         }

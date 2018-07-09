@@ -1,10 +1,9 @@
-using System.ComponentModel.DataAnnotations.Schema;
+using System;
 using Abp.AutoMapper;
 using KS.Core.Models;
 using KS.Core.Models.Emums;
-using KS.Sessions.Dto;
 
-namespace KS.Web.Views.Shared.Components.RatingSubmit
+namespace KS.Web.Views.Shared.Components.QuestionRatingSubmit
 {
     [AutoMapFrom(typeof(QuestionRating))]
     public class QuestionRatingSubmitViewModel
@@ -13,6 +12,10 @@ namespace KS.Web.Views.Shared.Components.RatingSubmit
         
         public Rating Rating { get; set; }
 
+        public double RatingValue { get; set; }
+            
         public string Reason { get; set; }
+
+
     }
 }

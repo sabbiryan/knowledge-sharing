@@ -8,7 +8,6 @@ using KS.QuestionRatings;
 using KS.Questions;
 using KS.Questions.Dto;
 using KS.Web.Views.Shared.Components.QuestionRatingSubmit;
-using KS.Web.Views.Shared.Components.RatingSubmit;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KS.Web.Controllers
