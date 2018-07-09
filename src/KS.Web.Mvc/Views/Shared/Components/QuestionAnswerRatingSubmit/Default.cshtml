@@ -1,0 +1,24 @@
+﻿@using KS.Web.Resources
+@inject IWebResourceManager WebResourceManager
+@{
+    WebResourceManager.AddScript(ApplicationPath + "view-resources/Views/Shared/Components/QuestionAnswerRatingSubmit/Default.js");
+}
+<a class="btn btn-default waves-effect waves-float question-answer-rating-submit-component"
+   data-toggle="modal" data-target="#QuestionAnswerRatingSubmitModal" onclick="questionAnswerRatingSubmitComponent(@Model.QuestionAnswerId)">@L("RateThisAnswer")</a>
+
+<a class="btn btn-default waves-effect waves-float pull-right">Current Rating: @Model.RatingValue</a>
+
+@*<div class="card question-rating-submit-component" style="margin-bottom: 3px;">
+    <div class="body text-center">
+        <span>
+            <a href="#" data-toggle="modal" data-target="#QuestionAnswerRatingSubmitModal">@L("RateThisAnswer")</a>
+        </span>
+    </div>
+</div>*@
+
+<div class="modal fade" id="QuestionAnswerRatingSubmitModal" tabindex="-1" role="dialog" aria-labelledby="QuestionAnswerRatingCreateModalLabel" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>

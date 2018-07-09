@@ -4,9 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using KS.Controllers;
+using KS.QuestionAnswerRatings;
+using KS.QuestionAnswers.Dto;
 using KS.QuestionRatings;
 using KS.Questions;
 using KS.Questions.Dto;
+using KS.Web.Views.Shared.Components.QuestionAnswerRatingSubmit;
 using KS.Web.Views.Shared.Components.QuestionRatingSubmit;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,14 +20,17 @@ namespace KS.Web.Controllers
         private readonly IQuestionAppService _questionAppService;
         private readonly IQuestionAnswerAppService _questionAnswerAppService;
         private readonly IQuestionRatingAppService _questionRatingAppService;
+        private readonly IQuestionAnswerRatingAppService _questionAnswerRatingAppService;
 
         public QuestionController(IQuestionAppService questionAppService, 
             IQuestionAnswerAppService questionAnswerAppService, 
-            IQuestionRatingAppService questionRatingAppService)
+            IQuestionRatingAppService questionRatingAppService, 
+            IQuestionAnswerRatingAppService questionAnswerRatingAppService)
         {
             _questionAppService = questionAppService;
             _questionAnswerAppService = questionAnswerAppService;
             _questionRatingAppService = questionRatingAppService;
+            _questionAnswerRatingAppService = questionAnswerRatingAppService;
         }
 
 
@@ -53,13 +59,38 @@ namespace KS.Web.Controllers
 
             var viewModel = new QuestionRatingSubmitModalViewModel()
             {
-                Id = questionRatingDto.Id,
-                QuestionId = questionRatingDto.QuestionId,
-                Rating = questionRatingDto.Rating,
-                Reason = questionRatingDto.Reason
+                QuestionId = input.QuestionId,                
             };
 
+            if (questionRatingDto != null)
+            {
+                viewModel.Id = questionRatingDto.Id;
+                viewModel.Rating = questionRatingDto.Rating;
+                viewModel.Reason = questionRatingDto.Reason;
+            }
+
             return PartialView("/Views/Shared/Components/QuestionRatingSubmit/_QuestionRatingSubmitModal.cshtml", viewModel);
+        }
+
+
+        public async Task<PartialViewResult> QuestionAnswerRatingSubmitModal(QuestionAnswerRatingSubmitModalViewModel input)
+        {
+            var questionAnswerRatingDto = await _questionAnswerRatingAppService.GetUserSubmitedQuestionAnswerRatingAsync(input.QuestionAnswerId,
+                AbpSession.UserId.GetValueOrDefault());
+
+            var viewModel = new QuestionAnswerRatingSubmitModalViewModel()
+            {
+                QuestionAnswerId = input.QuestionAnswerId                
+            };
+
+            if (questionAnswerRatingDto != null)
+            {
+                viewModel.Id = questionAnswerRatingDto.Id;
+                viewModel.Rating = questionAnswerRatingDto.Rating;
+                viewModel.Reason = questionAnswerRatingDto.Reason;
+            }
+
+            return PartialView("/Views/Shared/Components/QuestionAnswerRatingSubmit/_QuestionAnswerRatingSubmitModal.cshtml", viewModel);
         }
 
     }

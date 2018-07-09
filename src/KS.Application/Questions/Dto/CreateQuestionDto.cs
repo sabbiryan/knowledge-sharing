@@ -20,5 +20,6 @@ namespace KS.Questions.Dto
         public QuestionQuality? Quality { get; set; }
 
         public Rating? Rating { get; set; }
+        public double RatingValue { get; set; }
     }
 }

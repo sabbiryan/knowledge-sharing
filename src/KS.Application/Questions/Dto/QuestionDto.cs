@@ -3,6 +3,7 @@ using System.Linq;
 using Abp.AutoMapper;
 using KS.Core.Models;
 using KS.Core.Models.Emums;
+using KS.QuestionAnswers.Dto;
 using KS.Shared.Dto;
 
 namespace KS.Questions.Dto

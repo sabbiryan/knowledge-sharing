@@ -36,7 +36,7 @@ namespace KS.QuestionRatings
                 var questionRating = await _questionRatingRepository.GetAsync(input.Id);
                 questionRatingDto = questionRating.MapTo<QuestionRatingDto>();
                 questionRatingDto.Rating = input.Rating;
-                questionRating.Reason = input.Reason;
+                questionRatingDto.Reason = input.Reason;
                 questionRatingDto = await base.Update(questionRatingDto);
             }
             else
