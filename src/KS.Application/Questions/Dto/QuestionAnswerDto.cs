@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Abp.AutoMapper;
 using KS.Core.Models;
 using KS.Core.Models.Emums;
+using KS.Shared.Dto;
 
 namespace KS.Questions.Dto
 {
@@ -15,6 +16,7 @@ namespace KS.Questions.Dto
         public bool IsCorrect { get; set; }
 
         public Rating? Rating { get; set; }
+        public double RatingValue { get; set; }
 
         public List<QuestionAnswerCommentDto> QuestionAnswerComments { get; set; } = new List<QuestionAnswerCommentDto>();
     }

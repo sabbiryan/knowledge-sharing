@@ -101,5 +101,12 @@
     <text name="QuestionDetails">Question details</text>
     <text name="Title">Title</text>
     <text name="Description">Description</text>
+
+
+    <text name="Submit">Submit</text>
+    <text name="SubmitYourRating">Submit your rating</text>
+    <text name="RateThisQuestion">Rate this question</text>
+    <text name="RatingComment">Rating comment</text>
+    
   </texts>
 </localizationDictionary>

@@ -1,10 +1,10 @@
 ﻿@model KS.Questions.Dto.CreateQuestionAnswerDto
 
 
+<h4>Share your knowledge. Write your answer here</h4>
 <div class="panel">
     <div class="panel-body">
-        <form asp-action="Answer" asp-controller="Question" method="post">
-            <h4>Share your knowledge</h4>
+        <form asp-action="Answer" asp-controller="Question" method="post">            
             <br/>
 
             <input type="hidden" asp-for="@Model.QuestionId"/>

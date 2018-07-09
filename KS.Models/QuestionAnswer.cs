@@ -18,7 +18,8 @@ namespace KS.Core.Models
         public bool IsCorrect { get; set; }
 
         public Rating? Rating { get; set; }
-        
+        public double RatingValue { get; set; }
+
         public virtual ICollection<QuestionAnswerComment> QuestionAnswerComments { get; set; }
         public virtual ICollection<QuestionAnswerRating> QuestionAnswerRatings { get; set; }
         
