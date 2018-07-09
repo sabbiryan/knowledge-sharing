@@ -9,7 +9,7 @@ using KS.Core.Models.Emums;
 
 namespace KS.QuestionRatings.Dto
 {
-    [AutoMap(typeof(QuestionRating))]
+    [AutoMap(typeof(QuestionRating), typeof(QuestionRatingDto))]
     public class CreateQuestionRatingDto : EntityDto<int>
     {
         [Required]

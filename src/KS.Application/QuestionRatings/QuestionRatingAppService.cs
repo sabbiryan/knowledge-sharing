@@ -5,6 +5,7 @@ using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
+using AutoMapper;
 using KS.Core.Models;
 using KS.Core.Models.Emums;
 using KS.QuestionRatings.Dto;
@@ -29,7 +30,19 @@ namespace KS.QuestionRatings
 
         public override async Task<QuestionRatingDto> Create(CreateQuestionRatingDto input)
         {
-            var questionRatingDto = await base.Create(input);
+            QuestionRatingDto questionRatingDto;
+            if(input.Id > 0)
+            {
+                var questionRating = await _questionRatingRepository.GetAsync(input.Id);
+                questionRatingDto = questionRating.MapTo<QuestionRatingDto>();
+                questionRatingDto.Rating = input.Rating;
+                questionRating.Reason = input.Reason;
+                questionRatingDto = await base.Update(questionRatingDto);
+            }
+            else
+            {
+                questionRatingDto = await base.Create(input);
+            }            
 
             var question = await _questionRepository.GetAll().Where(x => x.Id == input.QuestionId)
                 .Include(x => x.QuestionRatings).FirstOrDefaultAsync();
@@ -38,6 +51,15 @@ namespace KS.QuestionRatings
             question.Rating = (Rating)rating;
 
             await _questionRepository.UpdateAsync(question);
+
+            return questionRatingDto;
+        }
+
+        public async Task<QuestionRatingDto> GetUserSubmitedQuestionRatingAsync(int questionId, long userId)
+        {
+            var questionRating = await _questionRatingRepository.FirstOrDefaultAsync(x => x.CreatorUserId == userId && x.QuestionId == questionId);
+
+            var questionRatingDto = questionRating.MapTo<QuestionRatingDto>();
 
             return questionRatingDto;
         }

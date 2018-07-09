@@ -5,6 +5,6 @@ namespace KS.Core.Models
 {
     public class KsEntityBase<T> : FullAuditedEntity<T>
     {
-        public User CreatorUser { get; set; }
+        public virtual User CreatorUser { get; set; }
     }
 }

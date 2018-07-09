@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using KS.Controllers;
+using KS.QuestionRatings;
 using KS.Questions;
 using KS.Questions.Dto;
+using KS.Web.Views.Shared.Components.QuestionRatingSubmit;
 using KS.Web.Views.Shared.Components.RatingSubmit;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,12 +17,15 @@ namespace KS.Web.Controllers
     {
         private readonly IQuestionAppService _questionAppService;
         private readonly IQuestionAnswerAppService _questionAnswerAppService;
+        private readonly IQuestionRatingAppService _questionRatingAppService;
 
         public QuestionController(IQuestionAppService questionAppService, 
-            IQuestionAnswerAppService questionAnswerAppService)
+            IQuestionAnswerAppService questionAnswerAppService, 
+            IQuestionRatingAppService questionRatingAppService)
         {
             _questionAppService = questionAppService;
             _questionAnswerAppService = questionAnswerAppService;
+            _questionRatingAppService = questionRatingAppService;
         }
 
 
@@ -44,9 +49,15 @@ namespace KS.Web.Controllers
 
         public async Task<PartialViewResult> QuestionRatingSubmitModal(QuestionRatingSubmitModalViewModel input)
         {
+            var questionRatingDto = await _questionRatingAppService.GetUserSubmitedQuestionRatingAsync(input.QuestionId,
+                AbpSession.UserId.GetValueOrDefault());
+
             var viewModel = new QuestionRatingSubmitModalViewModel()
             {
-                QuestionId = input.QuestionId
+                Id = questionRatingDto.Id,
+                QuestionId = questionRatingDto.QuestionId,
+                Rating = questionRatingDto.Rating,
+                Reason = questionRatingDto.Reason
             };
 
             return PartialView("/Views/Shared/Components/QuestionRatingSubmit/_QuestionRatingSubmitModal.cshtml", viewModel);

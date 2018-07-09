@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Abp.Application.Services.Dto;
 using KS.Core.Models.Emums;
 
-namespace KS.Web.Views.Shared.Components.RatingSubmit
+namespace KS.Web.Views.Shared.Components.QuestionRatingSubmit
 {
-    public class QuestionRatingSubmitModalViewModel
+    public class QuestionRatingSubmitModalViewModel : EntityDto<int>
     {
         [Required]
         public int QuestionId { get; set; }
