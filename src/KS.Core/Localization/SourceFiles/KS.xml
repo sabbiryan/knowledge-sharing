@@ -107,6 +107,8 @@
     <text name="SubmitYourRating">Submit your rating</text>
     <text name="RateThisQuestion">Rate this question</text>
     <text name="RatingComment">Rating comment</text>
+
+    <text name="RateThisAnswer">Rate this answer</text>
     
   </texts>
 </localizationDictionary>

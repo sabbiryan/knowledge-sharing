@@ -1,9 +1,8 @@
-using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using KS.Core.Models;
 using KS.Shared.Dto;
 
-namespace KS.Questions.Dto
+namespace KS.QuestionAnswerComments.Dto
 {
     [AutoMap(typeof(QuestionAnswerComment))]
     public class QuestionAnswerCommentDto : DtoBase<int>

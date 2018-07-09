@@ -23,9 +23,16 @@ namespace KS.Questions
 
         public async Task AskAQuestionAsync(CreateQuestionDto input)
         {
-            var question = input.MapTo<Question>();
+            try
+            {
+                var question = input.MapTo<Question>();
 
-            await _questionRepository.InsertAsync(question);
+                await _questionRepository.InsertAsync(question);
+            }
+            catch (Exception e)
+            {
+                
+            }
         }
 
         public Task RatingAQuestion(int questionId, Rating rating)

@@ -29,7 +29,5 @@ namespace KS.Core.Models
         public virtual ICollection<QuestionRating> QuestionRatings { get; set; }
         public virtual ICollection<QuestionViewCount> QuestionViewCounts { get; set; }
 
-
-        public User CreatorUser { get; set; }
     }
 }

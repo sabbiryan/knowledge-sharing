@@ -2,9 +2,11 @@ using System.Collections.Generic;
 using Abp.AutoMapper;
 using KS.Core.Models;
 using KS.Core.Models.Emums;
+using KS.QuestionAnswerComments.Dto;
+using KS.Questions.Dto;
 using KS.Shared.Dto;
 
-namespace KS.Questions.Dto
+namespace KS.QuestionAnswers.Dto
 {
     [AutoMap(typeof(QuestionAnswer))]
     public class QuestionAnswerDto : DtoBase<int>
