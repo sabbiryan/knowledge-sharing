@@ -11,5 +11,7 @@ namespace KS.Core.Models
         public virtual QuestionAnswer QuestionAnswer { get; set; }
 
         public Rating Rating { get; set; }
+
+        public string Reason { get; set; }
     }
 }

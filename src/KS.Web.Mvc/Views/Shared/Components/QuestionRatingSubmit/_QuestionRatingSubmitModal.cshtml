@@ -1,0 +1,37 @@
+﻿@using Abp.MultiTenancy
+@using KS.Web.Models.Common.Modals
+@using KS.Core.Models.Emums;
+@using KS.Web.Views.Shared.Components.QuestionRatingSubmit
+@model KS.Web.Views.Shared.Components.QuestionRatingSubmit.QuestionRatingSubmitModalViewModel
+@{
+    Layout = null;
+}
+@Html.Partial("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("SubmitYourRating")))
+
+<div class="modal-body">
+    <form name="QuestionRatingSubmitForm" id="QuestionRatingSubmitForm" role="form" novalidate class="form-validation">
+
+        <input type="hidden" asp-for="Id"/>
+        <input type="hidden" asp-for="QuestionId"/>
+
+        <div class="form-group form-float">
+            <div class="form-line">
+                <select class="form-control" asp-for="Rating" asp-items="Html.GetEnumSelectList<Rating>()" required>
+                    <option value="">Please Select Rating</option>
+                </select>
+                @*<label class="form-label">@L("Rating")</label>*@
+            </div>
+        </div>
+
+        <div class="form-group form-float">
+            <div class="form-line">
+                <textarea class="form-control" asp-for="Reason" maxlength="500" rows="5" ></textarea>
+                <label class="form-label">@L("RatingComment")</label>
+            </div>
+        </div>
+    </form>
+</div>
+
+@Html.Partial("~/Views/Shared/Modals/_ModalFooterWithSubmitAndCancel.cshtml")
+
+<script src="~/view-resources/Views/Shared/Components/QuestionRatingSubmit/_QuestionRatingSubmitModal.js" asp-append-version="true"></script>
