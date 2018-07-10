@@ -16,7 +16,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\KS.Models\KS.Core.Models.csproj" />
+    <ProjectReference Include="..\KS.Core.Models\KS.Core.Models.csproj" />
     <ProjectReference Include="..\KS.Core\KS.Core.csproj" />
   </ItemGroup>
   <ItemGroup>

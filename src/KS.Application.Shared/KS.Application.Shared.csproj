@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\KS.Core\KS.Core.csproj" />
+    <ProjectReference Include="..\KS.Application\KS.Application.csproj" />
   </ItemGroup>
 
 </Project>

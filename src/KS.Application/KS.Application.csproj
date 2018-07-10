@@ -11,7 +11,7 @@
     <RootNamespace>KS</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\KS.Models\KS.Core.Models.csproj" />
+    <ProjectReference Include="..\KS.Core.Models\KS.Core.Models.csproj" />
     <ProjectReference Include="..\KS.Core\KS.Core.csproj" />
   </ItemGroup>
 </Project>

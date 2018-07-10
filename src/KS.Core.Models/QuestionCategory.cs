@@ -6,5 +6,11 @@ namespace KS.Core.Models
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        
+        public QuestionCategory GetDefault() => new QuestionCategory()
+        {
+            Name = "Uncategorize",
+            Description = "No description available"
+        };
     }
 }

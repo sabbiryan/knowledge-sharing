@@ -23,9 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KS.Web.Mvc", "src\KS.Web.Mv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KS.EntityFrameworkCore", "src\KS.EntityFrameworkCore\KS.EntityFrameworkCore.csproj", "{E0580562-F8F2-4EBB-B07A-ABFC6F2C314F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KS.Core.Models", "KS.Models\KS.Core.Models.csproj", "{5F2FCA0B-0BC6-4ABE-BCD8-F1DE34E064B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KS.Core.Models", "src\KS.Core.Models\KS.Core.Models.csproj", "{5F2FCA0B-0BC6-4ABE-BCD8-F1DE34E064B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KS.Application.Shared", "KS.Application.Shared\KS.Application.Shared.csproj", "{31960DB1-BB34-4ADD-B9CB-918CDFC8FC7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KS.Application.Shared", "src\KS.Application.Shared\KS.Application.Shared.csproj", "{31960DB1-BB34-4ADD-B9CB-918CDFC8FC7F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

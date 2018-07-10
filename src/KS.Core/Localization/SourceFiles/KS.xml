@@ -109,6 +109,14 @@
     <text name="RatingComment">Rating comment</text>
 
     <text name="RateThisAnswer">Rate this answer</text>
+
+    <text name="Questions">Questions</text>
+    <text name="QuestionsCreate">Questions Create</text>
+    <text name="QuestionsEdit">Questions Edit</text>
+    <text name="QuestionsDelete">Questions Delete</text>
+    <text name="QuestionsRating">Questions Rating</text>
+    <text name="QuestionsComment">Questions Comment</text>
+    <text name="QuestionsArchive">Questions Archive</text>
     
   </texts>
 </localizationDictionary>

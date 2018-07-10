@@ -1,10 +1,13 @@
-﻿@using KS.Web.Views.Shared.Components.QuestionAnswerRatingSubmit
+﻿@using KS.Web.Startup
+@using KS.Web.Views.Shared.Components.QuestionAnswerRatingSubmit
 @using Microsoft.EntityFrameworkCore
 @model KS.Questions.Dto.QuestionDto
 
 @{
     ViewBag.Title = "Question";
     Layout = "_Layout";
+
+    ViewBag.CurrentPageName = PageNames.Home; // The menu item will be active for this page.
 }
 
 
@@ -41,7 +44,7 @@
                                     <br />
                                     <small class="pull-right"> Submited by @answer.CreatorUser.FullName on @answer.CreationTime.ToLongDateString() at @answer.CreationTime.ToLongTimeString()</small>
                                     <br/>
-                                    <button type="button" class="btn btn-sm btn-info">Rate this answer</button>
+                                    <button type="button" class="btn btn-sm btn-info">Correct</button>
                                     <button type="button" class="btn btn-sm btn-default">Add your comment</button>
 
                                     @await Component.InvokeAsync(typeof(QuestionAnswerRatingSubmitViewComponent), answer.Id)

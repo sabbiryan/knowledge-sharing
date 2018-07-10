@@ -11,6 +11,14 @@ namespace KS.Authorization
             context.CreatePermission(PermissionNames.Pages_Users, L("Users"));
             context.CreatePermission(PermissionNames.Pages_Roles, L("Roles"));
             context.CreatePermission(PermissionNames.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
+
+            context.CreatePermission(PermissionNames.Pages_Questions, L("Questions"));
+            context.CreatePermission(PermissionNames.Pages_Questions_Create, L("QuestionsCreate"));
+            context.CreatePermission(PermissionNames.Pages_Questions_Edit, L("QuestionsEdit"));
+            context.CreatePermission(PermissionNames.Pages_Questions_Delete, L("QuestionsDelete"));
+            context.CreatePermission(PermissionNames.Pages_Questions_Rating, L("QuestionsRating"));
+            context.CreatePermission(PermissionNames.Pages_Questions_Comment, L("QuestionsComment"));
+            context.CreatePermission(PermissionNames.Pages_Questions_Archive, L("QuestionsArchive"));
         }
 
         private static ILocalizableString L(string name)

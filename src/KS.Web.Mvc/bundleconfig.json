@@ -142,5 +142,17 @@
     "inputFiles": [
       "wwwroot/view-resources/Views/Shared/Components/TenantChange/Default.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/view-resources/Views/Shared/Components/QuestionAnswerRatingSubmit/Default.min.js",
+    "inputFiles": [
+      "wwwroot/view-resources/Views/Shared/Components/QuestionAnswerRatingSubmit/Default.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/view-resources/Views/Shared/Components/QuestionRatingSubmit/Default.min.js",
+    "inputFiles": [
+      "wwwroot/view-resources/Views/Shared/Components/QuestionRatingSubmit/Default.js"
+    ]
   }
 ]
