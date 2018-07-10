@@ -54,6 +54,16 @@ namespace KS.Web.Startup
                         requiredPermissionName: PermissionNames.Pages_Questions
                     )
                 )
+
+                .AddItem(
+                    new MenuItemDefinition(
+                        PageNames.Reports,
+                        L("Reports"),
+                        url: "Reports",
+                        icon: "info",
+                        requiredPermissionName: PermissionNames.Pages_Reports
+                    )
+                )
                 ;
 
             //.AddItem(

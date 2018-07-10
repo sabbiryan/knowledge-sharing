@@ -27,14 +27,18 @@
                         <h4>@item.Name <small>Posted on @item.CreationTime.ToLongDateString() at @item.CreationTime.ToLongTimeString()</small></h4>
 
                         <p>
-                            @item.Description
+                            @item.ShortDiscription
                         </p>
 
                         <p>
                             <a class="btn btn-info waves-effect waves-float" href="@Url.Action("Answer","Question",new {questionId = item.Id})">Answer this question</a>
+                            @if (item.IsEnableViewQuestionButton)
+                            {
+                                <a class="btn btn-default waves-effect waves-float" href="@Url.Action("Answer","Question",new {questionId = item.Id})">View question</a>   
+                            }                            
                             @*<button class="btn btn-default waves-effect waves-float" type="button">Comment</button>*@
                             @*<a class="btn btn-default waves-effect waves-float rating-submit-component">Rate this question</a>*@
-                            
+
                             <a class="btn btn-default waves-effect waves-float" href="@Url.Action("Answer","Question",new {questionId = item.Id})">View answers</a>
 
                             @await Component.InvokeAsync(typeof(QuestionRatingSubmitViewComponent), item.Id)

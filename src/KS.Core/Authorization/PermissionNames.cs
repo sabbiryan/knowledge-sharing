@@ -15,5 +15,7 @@
         public const string Pages_Questions_Rating = "Pages.Questions.Rating";
         public const string Pages_Questions_Comment = "Pages.Questions.Comment";
         public const string Pages_Questions_Archive = "Pages.Questions.Archive";
+
+        public const string Pages_Reports = "Pages.Reports";
     }
 }

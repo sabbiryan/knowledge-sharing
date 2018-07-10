@@ -10,6 +10,6 @@ namespace KS.Core.Models
         [ForeignKey("QuestionId")]
         public virtual Question Question { get; set; }
 
-        public long Count { get; set; }
+        public long Count { get; set; } = 1;
     }
 }

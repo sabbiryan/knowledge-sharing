@@ -24,6 +24,7 @@ namespace KS.EntityFrameworkCore
 
         public virtual DbSet<QuestionAnswer> QuestionAnswers { get; set; }
         public virtual DbSet<QuestionAnswerRating> QuestionAnswerRatings { get; set; }
+        public virtual DbSet<QuestionAnswerViewCount> QuestionAnswerViewCounts { get; set; }
         public virtual DbSet<QuestionAnswerComment> QuestionAnswerComments { get; set; }        
     }
 }

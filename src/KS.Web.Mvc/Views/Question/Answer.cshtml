@@ -1,5 +1,6 @@
 ﻿@using KS.Web.Startup
 @using KS.Web.Views.Shared.Components.QuestionAnswerRatingSubmit
+@using KS.Web.Views.Shared.Components.QuestionRatingSubmit
 @using Microsoft.EntityFrameworkCore
 @model KS.Questions.Dto.QuestionDto
 
@@ -29,6 +30,9 @@
 
                     <p>
                         @Model.Description
+                        <br />
+                        <br />
+                        @await Component.InvokeAsync(typeof(QuestionRatingSubmitViewComponent), Model.Id)
                     </p>
 
                     <br/>
@@ -44,8 +48,9 @@
                                     <br />
                                     <small class="pull-right"> Submited by @answer.CreatorUser.FullName on @answer.CreationTime.ToLongDateString() at @answer.CreationTime.ToLongTimeString()</small>
                                     <br/>
-                                    <button type="button" class="btn btn-sm btn-info">Correct</button>
-                                    <button type="button" class="btn btn-sm btn-default">Add your comment</button>
+                                    @*<button type="button" class="btn btn-sm btn-info">Like</button>
+                                    <button type="button" class="btn btn-sm btn-danger">Unlike</button>*@
+                                    @*<button type="button" class="btn btn-sm btn-default">Add your comment</button>*@
 
                                     @await Component.InvokeAsync(typeof(QuestionAnswerRatingSubmitViewComponent), answer.Id)
                                 </div>

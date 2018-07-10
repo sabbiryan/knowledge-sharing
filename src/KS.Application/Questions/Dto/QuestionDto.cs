@@ -20,10 +20,12 @@ namespace KS.Questions.Dto
         public QuestionQuality? Quality { get; set; }
 
         public Rating? Rating { get; set; }                      
-        public double RatingValue { get; set; }                      
+        public double RatingValue { get; set; }
 
-        public string ShortDiscription => Description.ToArray().ToList().Count > 100
-            ? string.Join(" ", Description.ToArray().ToList().Take(100))
+        public bool IsEnableViewQuestionButton => Description.Split(' ').ToList().Count > 100;
+
+        public string ShortDiscription => IsEnableViewQuestionButton
+            ? $"{string.Join(" ", Description.Split(' ').ToList().Take(100))}...................."
             : Description;
 
         public List<QuestionAnswerDto> QuestionAnswers { get; set; } = new List<QuestionAnswerDto>();

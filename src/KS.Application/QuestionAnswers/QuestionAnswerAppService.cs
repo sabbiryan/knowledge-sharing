@@ -1,17 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Abp.Application.Services;
+﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
-using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using KS.Core.Models;
-using KS.Core.Models.Emums;
 using KS.QuestionAnswers.Dto;
-using KS.Questions.Dto;
-using Microsoft.EntityFrameworkCore;
+using KS.Questions;
 
-namespace KS.Questions
+namespace KS.QuestionAnswers
 {
     public class QuestionAnswerAppService : AsyncCrudAppService<QuestionAnswer, QuestionAnswerDto, int, PagedResultRequestDto, CreateQuestionAnswerDto, QuestionAnswerDto>, IQuestionAnswerAppService
     {

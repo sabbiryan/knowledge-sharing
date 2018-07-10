@@ -118,5 +118,7 @@
     <text name="QuestionsComment">Questions Comment</text>
     <text name="QuestionsArchive">Questions Archive</text>
     
+    <text name="Reports">Reports</text>
+    
   </texts>
 </localizationDictionary>

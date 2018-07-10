@@ -19,6 +19,8 @@ namespace KS.Authorization
             context.CreatePermission(PermissionNames.Pages_Questions_Rating, L("QuestionsRating"));
             context.CreatePermission(PermissionNames.Pages_Questions_Comment, L("QuestionsComment"));
             context.CreatePermission(PermissionNames.Pages_Questions_Archive, L("QuestionsArchive"));
+
+            context.CreatePermission(PermissionNames.Pages_Reports, L("Reports"));
         }
 
         private static ILocalizableString L(string name)
