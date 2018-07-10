@@ -25,7 +25,7 @@ namespace KS.QuestionViewCounts
 
         public override async Task<QuestionViewCountDto> Create(CreateQuestionViewCountDto input)
         {
-            var questionViewCount = await _questionViewCountRepository.GetAll().OrderByDescending(x => x.CreationTime)
+            var questionViewCount = await _questionViewCountRepository.GetAll().AsNoTracking().OrderByDescending(x => x.CreationTime)
                 .FirstOrDefaultAsync();
 
             if (questionViewCount == null || (questionViewCount.CreationTime < Clock.Now.AddHours(-1)))
@@ -33,7 +33,7 @@ namespace KS.QuestionViewCounts
                return await Create(input);
             }
 
-            return input.MapTo<QuestionViewCountDto>();
+            return null;
 
         }
     }
