@@ -63,6 +63,9 @@
     <Content Update="Views\Home\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Reports\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Shared\Components\QuestionAnswerRatingSubmit\Default.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
