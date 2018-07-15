@@ -3,8 +3,13 @@
 @{
     WebResourceManager.AddScript(ApplicationPath + "view-resources/Views/Shared/Components/QuestionAnswerRatingSubmit/Default.js");
 }
-<a class="btn btn-default waves-effect waves-float question-answer-rating-submit-component"
-   data-toggle="modal" data-target="#QuestionAnswerRatingSubmitModal" onclick="questionAnswerRatingSubmitComponent(@Model.QuestionAnswerId)">@L("RateThisAnswer")</a>
+
+@if (Model.IsEnableRatingSubmit)
+{
+    <a class="btn btn-default waves-effect waves-float question-answer-rating-submit-component"
+       data-toggle="modal" data-target="#QuestionAnswerRatingSubmitModal" onclick="questionAnswerRatingSubmitComponent(@Model.QuestionAnswerId)">@L("RateThisAnswer")</a>
+    
+}
 
 <a class="btn btn-default waves-effect waves-float pull-right">Answer Rating: @Model.RatingValue</a>
 

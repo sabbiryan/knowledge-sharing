@@ -24,6 +24,7 @@ namespace KS.Web.Views.Shared.Components.QuestionRatingSubmit
             var questionDto = await _questionAppService.Get(new EntityDto<int>(questionId));
 
             var model = new QuestionRatingSubmitViewModel(){
+                IsEnableRatingSubmit = AbpSession.UserId != questionDto.CreatorUserId,
                 QuestionId = questionId,
                 Rating = questionDto.Rating.GetValueOrDefault(),
                 RatingValue = Math.Round(questionDto.RatingValue, 2)
