@@ -15,6 +15,6 @@ namespace KS.Web.Views.Shared.Components.QuestionAnswerRatingSubmit
             
         public string Reason { get; set; }
 
-
+        public bool IsEnableRatingSubmit { get; set; }
     }
 }
