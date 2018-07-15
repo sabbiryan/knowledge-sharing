@@ -36,6 +36,8 @@ namespace KS.Reports
 
             var questionAnswers = _questionAnsweRepository.GetAll().ToList();
 
+            var questionAnswerRatings = _questionAnswerRatingRepository.GetAll().ToList();
+
             foreach (var l in list)
             {
                 var questions = l.ToList();
@@ -50,6 +52,11 @@ namespace KS.Reports
                 frequencyReportDto.AverageRatingOfQuestionAnswer = answers.Sum(x => x.RatingValue) / answers.Count;
 
                 frequencyReportDto.QuestionAnswerViewedToOthersCount = 0;
+                foreach (var answer in answers)
+                {
+                    frequencyReportDto.QuestionAnswerViewedToOthersCount += questionAnswerRatings.Count(x =>
+                        x.QuestionAnswerId == answer.Id && x.CreatorUserId == l.Key);
+                }                
 
                 frequencyReportDtos.Add(frequencyReportDto);
             }
