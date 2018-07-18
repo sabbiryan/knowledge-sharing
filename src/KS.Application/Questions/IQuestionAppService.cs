@@ -11,5 +11,6 @@ namespace KS.Questions
         Task AskAQuestionAsync(CreateQuestionDto input);
         Task RatingAQuestion(int questionId, Rating rating);
         Task<QuestionDto> GetQuestionDetail(int questionId);
+        Task<PagedResultDto<QuestionDto>> GetAllCurrentUserQuestions(PagedResultRequestDto input);
     }
 }

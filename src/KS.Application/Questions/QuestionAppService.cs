@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.Application.Services;
@@ -21,6 +22,17 @@ namespace KS.Questions
             _questionRepository = questionRepository;
         }
 
+        public async Task<QuestionDto> UpdateQuestion(CreateQuestionDto input)
+        {
+            var question = await _questionRepository.GetAsync(input.Id);
+
+            var questionDto = question.MapTo<QuestionDto>();
+            questionDto.Name = input.Name;
+            questionDto.Description = input.Description;
+
+            return await base.Update(questionDto);
+        }
+
         public async Task AskAQuestionAsync(CreateQuestionDto input)
         {
             try
@@ -31,7 +43,7 @@ namespace KS.Questions
             }
             catch (Exception e)
             {
-                
+                // ignored
             }
         }
 
@@ -50,6 +62,17 @@ namespace KS.Questions
             var dto = question.MapTo<QuestionDto>();
 
             return dto;
+        }
+
+        public async Task<PagedResultDto<QuestionDto>> GetAllCurrentUserQuestions(PagedResultRequestDto input)
+        {
+            var questions = await _questionRepository.GetAll().Where(x => x.CreatorUserId == AbpSession.UserId)
+                .Skip(input.SkipCount)
+                .Take(input.MaxResultCount).ToListAsync();
+
+            var questionDtos = questions.MapTo<List<QuestionDto>>();
+
+            return new PagedResultDto<QuestionDto>(questionDtos.Count, questionDtos);
         }
     }
 }

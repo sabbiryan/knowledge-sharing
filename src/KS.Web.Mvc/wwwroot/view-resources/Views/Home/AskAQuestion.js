@@ -1,7 +1,7 @@
 ﻿(function() {
     $(function() {
 
-        var _userService = abp.services.app.question;
+        var _questionService = abp.services.app.question;
         var _$modal = $('#QuestionCreateModal');
         var _$form = _$modal.find('form');
 
@@ -15,7 +15,7 @@
         });
 
         $('#RefreshButton').click(function () {
-            refreshUserList();
+            refreshQuestionList();
         });
         
         _$form.find('button[type="submit"]').click(function (e) {
@@ -29,7 +29,7 @@
 
 
             abp.ui.setBusy(_$modal);
-            _userService.askAQuestion(user).done(function () {
+            _questionService.askAQuestion(user).done(function () {
                 _$modal.modal('hide');
                 location.reload(true); //reload page to see new user!
             }).always(function () {
@@ -41,7 +41,7 @@
             _$modal.find('input:not([type=hidden]):first').focus();
         });
 
-        function refreshUserList() {
+        function refreshQuestionList() {
             location.reload(true); //reload page to see new user!
         }
         

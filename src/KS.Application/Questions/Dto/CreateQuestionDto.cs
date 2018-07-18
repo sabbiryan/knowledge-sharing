@@ -6,7 +6,7 @@ using KS.Core.Models.Emums;
 
 namespace KS.Questions.Dto
 {
-    [AutoMap(typeof(Question))]
+    [AutoMap(typeof(Question), typeof(QuestionDto))]
     public class CreateQuestionDto : EntityDto<int>
     {
         public int? CategoryId { get; set; }
