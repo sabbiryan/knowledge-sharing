@@ -49,7 +49,7 @@ namespace KS.Web.Startup
                     new MenuItemDefinition(
                         PageNames.Questions,
                         L("Questions"),
-                        url: "Questions",
+                        url: "Question",
                         icon: "info",
                         requiredPermissionName: PermissionNames.Pages_Questions
                     )

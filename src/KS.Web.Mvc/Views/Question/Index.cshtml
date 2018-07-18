@@ -1,21 +1,19 @@
-﻿@using Abp.Application.Services.Dto
-@using KS.Questions.Dto
-@using KS.Web.Models.Home
+﻿@using KS.Web.Models.Question
 @using KS.Web.Startup
 @using KS.Web.Views.Shared.Components.QuestionRatingSubmit
-@model KS.Web.Models.Home.HomeViewModel
+@model QuestionViewModel
 @{
-    ViewBag.CurrentPageName = PageNames.Home; // The menu item will be active for this page.
+    ViewBag.CurrentPageName = PageNames.Questions; // The menu item will be active for this page.
 }
 @section scripts{
-    
+    <script src="~/view-resources/Views/Question/Question.js"></script>
 }
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
             <div class="header">
                 <h2>
-                    Hello, <span class="text-capitalize">@Model.CurrentUser.FullName </span>
+                    <span class="text-capitalize">@Model.CurrentUser.FullName </span> Questions
                 </h2>
             </div>
             <div class="body">
@@ -25,22 +23,23 @@
                     foreach (var item in Model.PagedResultDto.Items)
                     {
                         <div class="panel panel-body">
-                            <h4>@item.Name <small>Posted on @item.CreationTime.ToLongDateString() at @item.CreationTime.ToLongTimeString()</small></h4>
+                            <h4><span data-question-title="@item.Name">@item.Name</span> <small>Posted on @item.CreationTime.ToLongDateString() at @item.CreationTime.ToLongTimeString()</small></h4>
 
                             <p>
                                 @item.ShortDiscription
                             </p>
 
                             <p>
-                                <a class="btn btn-info waves-effect waves-float" href="@Url.Action("Answer","Question",new {questionId = item.Id})">Answer this question</a>
+                                <a class="btn btn-info waves-effect waves-float edit-question" href="#" data-question-id="@item.Id" data-toggle="modal" data-target="#QuestionEditModal">Edit</a>
+
                                 @if (item.IsEnableViewQuestionButton)
                                 {
                                     <a class="btn btn-default waves-effect waves-float" href="@Url.Action("Answer","Question",new {questionId = item.Id})">View question</a>
                                 }
-                                @*<button class="btn btn-default waves-effect waves-float" type="button">Comment</button>*@
-                                @*<a class="btn btn-default waves-effect waves-float rating-submit-component">Rate this question</a>*@
 
                                 <a class="btn btn-default waves-effect waves-float" href="@Url.Action("Answer","Question",new {questionId = item.Id})">View answers</a>
+
+                                <a href="#" class="btn btn-default waves-effect waves-float archive-question" data-question-id="@item.Id">Archive</a>
 
                                 @await Component.InvokeAsync(typeof(QuestionRatingSubmitViewComponent), item.Id)
                             </p>
@@ -49,6 +48,16 @@
                 }
 
             </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="QuestionEditModal" tabindex="-1" role="dialog" aria-labelledby="QuestionEditModalLabel" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
         </div>
     </div>
 </div>

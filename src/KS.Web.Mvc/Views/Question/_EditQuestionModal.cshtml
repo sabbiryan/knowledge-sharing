@@ -1,0 +1,46 @@
+﻿@using KS.Web.Models.Common.Modals
+@model KS.Questions.Dto.CreateQuestionDto
+@{
+    Layout = null;
+}
+@Html.Partial("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("EditQuestion")))
+
+<div class="modal-body">
+    <form name="QuestionEditForm" role="form" novalidate class="form-validation">
+        <ul class="nav nav-tabs tab-nav-right" role="tablist">
+            <li role="presentation" class="active"><a href="#edit-question-details" data-toggle="tab">@L("QuestionDetails")</a></li>
+        </ul>
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane animated fadeIn active" id="edit-question-details">
+                <input type="hidden" asp-for="Id"/>
+                <div class="row clearfix" style="margin-top:10px;">
+                    <div class="col-sm-12">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <input class="form-control" type="text" name="Name" asp-for="Name" required minlength="5">
+                                <label class="form-label">@L("Title")</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row clearfix" style="margin-top:10px;">
+                    <div class="col-sm-12">
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <textarea class="form-control" name="Description" asp-for="Description" rows="10" required minlength="10"> </textarea>
+                                <label class="form-label">@L("Description")</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+@Html.Partial("~/Views/Shared/Modals/_ModalFooterWithSaveAndCancel.cshtml")
+
+
+<script src="~/view-resources/Views/Question/_EditQuestionModal.js"></script>

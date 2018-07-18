@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
+using KS.Authorization.Users;
 using KS.Controllers;
 using KS.QuestionAnswerRatings;
 using KS.QuestionAnswers;
@@ -12,6 +14,9 @@ using KS.Questions;
 using KS.Questions.Dto;
 using KS.QuestionViewCounts;
 using KS.QuestionViewCounts.Dto;
+using KS.Users.Dto;
+using KS.Web.Models.Home;
+using KS.Web.Models.Question;
 using KS.Web.Views.Shared.Components.QuestionAnswerRatingSubmit;
 using KS.Web.Views.Shared.Components.QuestionRatingSubmit;
 using Microsoft.AspNetCore.Mvc;
@@ -25,20 +30,46 @@ namespace KS.Web.Controllers
         private readonly IQuestionRatingAppService _questionRatingAppService;
         private readonly IQuestionAnswerRatingAppService _questionAnswerRatingAppService;
         private readonly IQuestionViewCountAppService _questionViewCountAppService;
+        private readonly UserManager _userManager;
 
         public QuestionController(IQuestionAppService questionAppService, 
             IQuestionAnswerAppService questionAnswerAppService, 
             IQuestionRatingAppService questionRatingAppService, 
             IQuestionAnswerRatingAppService questionAnswerRatingAppService, 
-            IQuestionViewCountAppService questionViewCountAppService)
+            IQuestionViewCountAppService questionViewCountAppService, UserManager userManager)
         {
             _questionAppService = questionAppService;
             _questionAnswerAppService = questionAnswerAppService;
             _questionRatingAppService = questionRatingAppService;
             _questionAnswerRatingAppService = questionAnswerRatingAppService;
             _questionViewCountAppService = questionViewCountAppService;
+            _userManager = userManager;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+
+            QuestionViewModel viewModel = new QuestionViewModel
+            {
+                PagedResultDto = await _questionAppService.GetAllCurrentUserQuestions(new PagedResultRequestDto() { MaxResultCount = 100 })
+            };
+
+            var user = await _userManager.GetUserByIdAsync(AbpSession.UserId.GetValueOrDefault());
+            viewModel.CurrentUser = user.MapTo<UserDto>();
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public async Task<PartialViewResult> EditQuestionModal(int questionId)
+        {
+            var questionDto = await _questionAppService.Get(new EntityDto<int>(questionId));
+
+            var createQuestionDto = questionDto.MapTo<CreateQuestionDto>();
+
+            return PartialView("_EditQuestionModal", createQuestionDto);
+        }
 
         [HttpGet]
         public async Task<IActionResult> Answer(int questionId)
