@@ -154,5 +154,41 @@
     "inputFiles": [
       "wwwroot/view-resources/Views/Shared/Components/QuestionRatingSubmit/Default.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/view-resources/Views/Roles/Index.min.js",
+    "inputFiles": [
+      "wwwroot/view-resources/Views/Roles/Index.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/view-resources/Views/Roles/_EditRoleModal.min.js",
+    "inputFiles": [
+      "wwwroot/view-resources/Views/Roles/_EditRoleModal.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/view-resources/Views/Question/_EditQuestionModal.min.js",
+    "inputFiles": [
+      "wwwroot/view-resources/Views/Question/_EditQuestionModal.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/view-resources/Views/Home/AskAQuestion.min.js",
+    "inputFiles": [
+      "wwwroot/view-resources/Views/Home/AskAQuestion.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/view-resources/Views/Users/_EditUserModal.min.js",
+    "inputFiles": [
+      "wwwroot/view-resources/Views/Users/_EditUserModal.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/view-resources/Views/Tenants/_EditTenantModal.min.js",
+    "inputFiles": [
+      "wwwroot/view-resources/Views/Tenants/_EditTenantModal.js"
+    ]
   }
 ]

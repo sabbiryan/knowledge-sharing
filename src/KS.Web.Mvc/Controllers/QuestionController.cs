@@ -79,11 +79,22 @@ namespace KS.Web.Controllers
 
             if (model != null && model.CreatorUserId != AbpSession.UserId)
             {
-                await _questionViewCountAppService.Create(new CreateQuestionViewCountDto()
+                try
                 {
-                    QuestionId = model.Id,
-                    Count = 1
-                });                
+                    var createQuestionViewCountDto = new CreateQuestionViewCountDto()
+                    {
+                        QuestionId = model.Id,
+                        Count = 1,
+                    };
+
+                    await _questionViewCountAppService.Create(createQuestionViewCountDto);
+
+                    //await _questionViewCountAppService.CreateViewCount(createQuestionViewCountDto);
+                }
+                catch (Exception e)
+                {
+                    Logger.Error(e.ToString);
+                }
             }
 
             return View(model);

@@ -57,7 +57,10 @@ namespace KS.Questions
             var question = await _questionRepository.GetAll().Where(x => x.Id == questionId)
                 .Include(x=> x.CreatorUser)
                 .Include(x => x.QuestionAnswers)
-                .ThenInclude(y => y.QuestionAnswerComments).FirstOrDefaultAsync();
+                .ThenInclude(y => y.QuestionAnswerComments)
+                .Include(x=> x.QuestionAnswers)
+                .ThenInclude(x=> x.CreatorUser)
+                .FirstOrDefaultAsync();
 
             var dto = question.MapTo<QuestionDto>();
 
