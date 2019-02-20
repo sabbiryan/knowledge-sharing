@@ -23,17 +23,6 @@ Thank you for reading and visiting this repostory. Welcome to your first commit.
 ##### Help us 
 You are welcome to create and report an issue for further assist.
 
-##### Live demo
-You can try the latest deployment demo in the following link
-http://ks.datacrud.com
-
-###### Admin User Access
-Username: admin <br/>
-Password: 123qwe
-
-###### General User Access
-Username: user <br/>
-Password: 123qwe
 
 
 
