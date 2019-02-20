@@ -185,6 +185,7 @@ namespace KS.Web.Controllers
                     model.EmailAddress,
                     model.UserName,
                     model.Password,
+
                     true // Assumed email address is always confirmed. Change this if you want to implement email confirmation.
                 );
 

@@ -55,7 +55,7 @@ namespace KS.Reports
                 foreach (var answer in answers)
                 {
                     frequencyReportDto.QuestionAnswerViewedToOthersCount += questionAnswerRatings.Count(x =>
-                        x.QuestionAnswerId == answer.Id && x.CreatorUserId == l.Key);
+                        x.QuestionAnswerId == answer.Id);
                 }                
 
                 frequencyReportDtos.Add(frequencyReportDto);

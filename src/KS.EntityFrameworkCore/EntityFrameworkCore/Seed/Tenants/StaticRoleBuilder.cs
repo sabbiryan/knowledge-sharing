@@ -25,7 +25,9 @@ namespace KS.EntityFrameworkCore.Seed.Tenants
             var userRole = context.Roles.IgnoreQueryFilters().FirstOrDefault(r => r.TenantId == tenantId && r.Name == StaticRoleNames.Tenants.User);
             if (userRole == null)
             {
-                userRole = context.Roles.Add(new Role(tenantId, StaticRoleNames.Tenants.User, StaticRoleNames.Tenants.User) { IsStatic = true }).Entity;
+                userRole = context.Roles
+                    .Add(new Role(tenantId, StaticRoleNames.Tenants.User, StaticRoleNames.Tenants.User)
+                        {IsStatic = true, IsDefault = true}).Entity;
                 context.SaveChanges();
             }
 
